@@ -1,0 +1,52 @@
+<ion-fab top right>
+    <button ion-fab mini (click)="locate()" icon-only>
+        <!-- <img src="https://png.icons8.com/near-me/ios7/25/ffffff"> -->
+        <ion-icon name="map" icon-only></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-footer>
+    <ion-grid class="footer-buttons-menu">
+      <ion-row align-items-center>
+        <ion-col>
+          <div class="bg-transparent" (click)="goto('ArPage')">
+            <img src="assets/imgs/ar25x25.png">
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="bg-transparent" (click)="goto('MapPage')">
+            <img src="assets/imgs/mapa25x25.png">
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="bg-transparent" (click)="goto('ListPage')">
+            <img src="assets/imgs/lista25x25.png">
+          </div>
+        </ion-col>
+      <!--ion-col>
+        <div class="bg-transparent" (click)="goto('SettingsPage')">
+          <img src="https://png.icons8.com/settings/ios7/25/ffffff">
+        </div>
+      </ion-col-->
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+
+<ion-content>
+
+  <h1 class="text-center" *ngIf="!location">Ative a locazilazção.</h1>
+
+  <ion-list no-lines *ngIf="location">
+    <ion-item *ngFor="let place of places" (click)="single(place.place_id)">
+      <ion-avatar item-start>
+        <img *ngIf="place.photos" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference={{place.photos[0].photo_reference}}&key=AIzaSyAINTVkf45i_dLESF_CHluQ1zp8ISbofgg">
+        <img *ngIf="!place.photos" src="assets/imgs/marker-filled.png">
+      </ion-avatar>
+      <h2>{{place.name}}</h2>
+      <p>{{place.vicinity}}</p>
+      <ion-note item-end>
+        <span *ngIf="place.rating" class="align-right bg-standard badge">{{place.rating}}</span>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

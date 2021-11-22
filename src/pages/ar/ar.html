@@ -1,0 +1,52 @@
+<ion-fab top right>
+    <button ion-fab mini (click)="locate()" icon-only>
+        <!-- <img src="https://png.icons8.com/near-me/ios7/25/ffffff"> -->
+        <ion-icon name="map" icon-only></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-footer>
+    <ion-grid class="footer-buttons-menu">
+      <ion-row align-items-center>
+        <ion-col>
+          <div class="bg-transparent" (click)="goto('ArPage')">
+            <img src="assets/imgs/ar25x25.png">
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="bg-transparent" (click)="goto('MapPage')">
+            <img src="assets/imgs/mapa25x25.png">
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="bg-transparent" (click)="goto('ListPage')">
+            <img src="assets/imgs/lista25x25.png">
+          </div>
+        </ion-col>
+      <!--ion-col>
+        <div class="bg-transparent" (click)="goto('SettingsPage')">
+          <img src="https://png.icons8.com/settings/ios7/25/ffffff">
+        </div>
+      </ion-col-->
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+
+<ion-content style="background-color: transparent !important;">
+
+  <div class="direction">
+    <span class="badge bg-standard">{{direction}}</span>
+  </div>
+
+  <div *ngFor="let p of places">
+    <ion-item (click)="info(p.place.place_id)" *ngIf="show(p.bearing)" class="marker" [style.transform]="'translateX('+ ((p.bearing-mot)*5)+50 +'px)'">
+        {{p.place.name}}
+        <ion-note>
+          <span class="distance">{{p.distance | number:'1.0-0'}} km</span>
+        </ion-note>
+        <ion-note item-end>
+          <span *ngIf="p.place.rating" class="align-right bg-accent badge">{{p.place.rating}}</span>
+        </ion-note>
+    </ion-item>
+  </div>
+
+</ion-content>

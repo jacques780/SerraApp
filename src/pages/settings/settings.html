@@ -1,0 +1,38 @@
+<ion-fab top right>
+    <button ion-fab mini icon-only>
+        <!-- <img src="https://png.icons8.com/near-me/ios7/25/ffffff"> -->
+        <ion-icon name="map" icon-only></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-footer>
+  <ion-grid class="footer-buttons-menu">
+    <ion-row align-items-center>
+      <ion-col>
+        <div class="bg-transparent" (click)="goto('ArPage')">
+          <img src="https://png.icons8.com/aperture/ios7/25/ffffff">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="bg-transparent" (click)="goto('MapPage')">
+          <img src="https://png.icons8.com/map-marker/ios7/25/ffffff">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="bg-transparent" (click)="goto('ListPage')">
+          <img src="https://png.icons8.com/list-2/ios7/25/ffffff">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="bg-transparent" (click)="goto('SettingsPage')">
+          <img src="https://png.icons8.com/settings/ios7/25/ffffff">
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+
+<ion-content>
+
+  <h1>Settings page here</h1>
+
+</ion-content>
